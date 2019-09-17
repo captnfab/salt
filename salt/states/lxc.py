@@ -18,6 +18,7 @@ def present(name,
             snapshot=False,
             profile=None,
             network_profile=None,
+            nic_opts=None,
             template=None,
             options=None,
             image=None,
@@ -74,6 +75,19 @@ def present(name,
         the parameters listed below.
 
         .. versionadded:: 2015.5.2
+
+    nic_opts
+        per interface settings compatibles with
+        network profile (ipv4/ipv6/link/gateway/mac/netmask)
+
+        eg::
+
+              - {'eth0': {'mac': '00:16:3e:01:29:40',
+                          'gateway': None, (default)
+                          'link': 'br0', (default)
+                          'gateway': None, (default)
+                          'netmask': '', (default)
+                          'ip': '22.1.4.25'}}
 
     **Container Creation Arguments**
 
@@ -241,6 +255,7 @@ def present(name,
                     name,
                     profile=profile,
                     network_profile=network_profile,
+                    nic_opts=nic_opts,
                     template=template,
                     options=options,
                     image=image,
